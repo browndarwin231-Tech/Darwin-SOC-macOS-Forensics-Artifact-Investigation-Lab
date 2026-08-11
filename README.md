@@ -9,7 +9,7 @@ This project documents a hands-on macOS forensic investigation completed using t
 
 The investigation focused on mounting a macOS APFS forensic disk image and analyzing artifacts related to system information, network activity, user accounts, login/logout activity, command execution, application usage, Finder activity, file-system behavior, and connected devices.
 
-The goal of this project was to strengthen practical SOC, DFIR, endpoint-investigation, and incident-response skills while documenting findings in a structured technical investigation.
+The goal of this project was to strengthen practical SOC, DFIR, endpoint-investigation, and incident-response skills while documenting forensic findings in a structured technical investigation.
 
 ---
 
@@ -68,7 +68,7 @@ The lab covered:
 - File System Activity
 - Connected Devices
 
-![Screenshot 1 - macOS Forensics Lab Overview](Screenshot/01-macOS-Forensics-Lab-Overview.png)
+![Screenshot 1 - macOS Forensics Lab Overview](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/01-macOS-Forensics-Lab-Overview.png)
 
 ---
 
@@ -84,15 +84,15 @@ apfs-fuse -v 4 mac-disk.img ~/mac
 
 The APFS Data volume was selected so forensic artifacts could be examined from the attached Linux virtual machine.
 
-This step provided access to the mounted macOS file system for further forensic analysis.
+This provided access to the mounted macOS file system for further forensic analysis.
 
-![Screenshot 2 - APFS Data Volume Mount](Screenshot/02-macOS-APFS-Data-Volume-Mount-Verified.png)
+![Screenshot 2 - APFS Data Volume Mount](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/02-macOS-APFS-Data-Volume-Mount-Verified.png)
 
 ---
 
 ### Screenshot 3 – macOS System Information
 
-Reviewed the macOS system information artifact located at:
+Reviewed the macOS system-information artifact located at:
 
 ```text
 /System/Library/CoreServices/SystemVersion.plist
@@ -102,7 +102,7 @@ This artifact can provide information about the installed operating system, incl
 
 Identifying system information helps confirm the environment being investigated and provides context for other forensic artifacts.
 
-![Screenshot 3 - macOS System Information](Screenshot/03-macOS-System-Information-OS-Version.png)
+![Screenshot 3 - macOS System Information](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/03-macOS-System-Information-OS-Version.png)
 
 ---
 
@@ -122,24 +122,24 @@ Example command:
 zgrep BOOT_TIME root/private/var/log/system.log*
 ```
 
-Historical boot records were used to help establish a system timeline.
+Historical boot records helped establish a forensic system timeline.
 
-![Screenshot 4 - System Information Verified](Screenshot/04-macOS-System-Information-Verified.png)
+![Screenshot 4 - System Information Verified](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/04-macOS-System-Information-Verified.png)
 
 ---
 
 ### Screenshot 5 – Network Artifact Investigation
 
-Investigated macOS network artifacts to identify network-interface and routing information.
+Investigated macOS networking artifacts to identify network-interface and routing information.
 
 #### Verified Findings
 
 - Built-in Network Interface: `en0`
 - Router IP Address: `192.168.64.1`
 
-Network artifacts can help investigators understand how an endpoint communicated and identify network interfaces, gateways, and previously used network configurations.
+Network artifacts can help investigators understand how an endpoint communicated and identify network interfaces, routers, gateways, and historical network configurations.
 
-![Screenshot 5 - Network Artifact Investigation](Screenshot/05-macOS-Network-Artifact-Investigation.png)
+![Screenshot 5 - Network Artifact Investigation](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/05-macOS-Network-Artifact-Investigation.png)
 
 ---
 
@@ -159,9 +159,9 @@ Example command:
 zgrep -i "logout" root/private/var/log/system.log*
 ```
 
-This evidence helped establish which user was active on the system and when the session ended.
+This evidence helped establish which user was active on the system and when the user session ended.
 
-![Screenshot 6 - Account Activity Verified](Screenshot/06-macOS-Account-Activity-Verified.png)
+![Screenshot 6 - Account Activity Verified](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/06-macOS-Account-Activity-Verified.png)
 
 ---
 
@@ -184,7 +184,7 @@ KnowledgeC database location:
 
 This demonstrated how macOS activity databases can be used to reconstruct user actions and application activity.
 
-![Screenshot 7 - Evidence of Execution Verified](Screenshot/07-macOS-Evidence-of-Execution-Verified.png)
+![Screenshot 7 - Evidence of Execution Verified](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/07-macOS-Evidence-of-Execution-Verified.png)
 
 ---
 
@@ -197,9 +197,9 @@ Analyzed macOS Finder artifacts to identify recent file-system activity and fold
 - `/Users/thm` View Setting: `Open in list view`
 - Last Finder Directory: `Recents`
 
-Finder artifacts can help determine which locations a user recently interacted with during an investigation.
+Finder artifacts can help determine which folders and locations a user recently accessed during an investigation.
 
-![Screenshot 8 - File System Activity Verified](Screenshot/08-macOS-File-System-Activity-Verified.png)
+![Screenshot 8 - File System Activity Verified](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/08-macOS-File-System-Activity-Verified.png)
 
 ---
 
@@ -213,9 +213,9 @@ Reviewed macOS KnowledgeC artifacts associated with connected Bluetooth devices.
 Bluetooth/isConnected
 ```
 
-Connected-device artifacts can help identify external devices or peripherals associated with the endpoint.
+Connected-device artifacts can help investigators identify external devices or peripherals associated with an endpoint.
 
-![Screenshot 9 - Connected Devices Verified](Screenshot/09-macOS-Connected-Devices-Verified.png)
+![Screenshot 9 - Connected Devices Verified](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/09-macOS-Connected-Devices-Verified.png)
 
 ---
 
@@ -223,7 +223,7 @@ Connected-device artifacts can help identify external devices or peripherals ass
 
 Successfully completed the TryHackMe **macOS Forensics: Artefacts** room at 100%.
 
-The investigation included:
+The completed investigation included:
 
 - macOS system-information analysis
 - APFS disk-image mounting
@@ -237,7 +237,7 @@ The investigation included:
 - Connected-device investigation
 - Forensic timeline development
 
-![Screenshot 10 - macOS Forensics Lab Completed](Screenshot/10-macOS-Forensics-Lab-Completed.png)
+![Screenshot 10 - macOS Forensics Lab Completed](https://raw.githubusercontent.com/browndarwin231-Tech/Darwin-SOC-macOS-Forensics-Artifact-Investigation-Lab/main/Screenshot/10-macOS-Forensics-Lab-Completed.png)
 
 ---
 
@@ -285,7 +285,7 @@ Key skills practiced include:
 
 These techniques can support investigations involving:
 
-- Suspicious endpoint behavior
+- Suspicious endpoint activity
 - Account compromise
 - Unauthorized access
 - Malware execution
@@ -312,7 +312,7 @@ I gained hands-on experience working with:
 - Bluetooth artifacts
 - Linux forensic commands
 
-The investigation reinforced the importance of validating findings through multiple sources of evidence and documenting each step of the forensic process.
+The investigation reinforced the importance of validating findings through multiple sources of evidence and documenting each stage of the forensic process.
 
 ---
 
@@ -320,7 +320,6 @@ The investigation reinforced the importance of validating findings through multi
 
 This project provided hands-on experience investigating a macOS forensic disk image and extracting useful evidence from system files, historical logs, preference files, Finder artifacts, account information, and the KnowledgeC database.
 
-Using Linux command-line tools and APOLLO, I was able to identify system information, investigate network activity, reconstruct user sessions, recover command-execution evidence, examine Finder activity, analyze connected devices, and document the findings in a structured forensic investigation.
+Using Linux command-line tools and APOLLO, I identified system information, investigated network activity, reconstructed user sessions, recovered command-execution evidence, examined Finder activity, analyzed connected devices, and documented the findings in a structured forensic investigation.
 
 This lab expanded my SOC and incident-response experience beyond Windows environments and strengthened my ability to investigate macOS endpoints using practical DFIR techniques.
-
